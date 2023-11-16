@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Color Changer</title>
+</head>
+<body>
+	<div id="header">
+		<h2>Color Scheme Switcher</h2>
+		<div class="container">
+			<div class="button div-one" id="grey"></div>
+			<div class="button div-two" id="white"></div>
+			<div class="button div-three" id="blue"></div>
+			<div class="button div-four" id="yellow"></div>	
+		</div>
+		<h3>Try clicking on one of the colors above to change 
+			the background color of this page!</h3>
+	</div>
+	<style type="text/css">
+		#header {
+			text-align: center;
+		}
+		.container {
+			display: flex;
+			justify-content: center;
+		}
+		.div-one {
+			background-color: #808080;
+			height: 100px;
+			margin-right: 4px;
+			border: 2px solid black;
+			width: 5%;
+		}
+		.div-two {
+			background-color: #ffffff;
+			height: 100px;
+			margin-right: 4px;
+			border: 2px solid black;
+			width: 5%;
+		}
+		.div-three {
+			background-color: #0000ff;
+			height: 100px;
+			margin-right: 4px;
+			border: 2px solid black;
+			width: 5%;
+		}
+		.div-four {
+			background-color: #ffff00;
+			height: 100px;
+			margin-right: 4px;
+			border: 2px solid black;
+			width: 5%;
+		}
+	</style>
+	<script type="text/javascript">
+		const buttons = document.querySelectorAll(".button");
+		const body = document.querySelector("body");
+
+		// buttons.forEach( (button) => {
+		// 	// console.log(button);
+		// 	button.addEventListener("click", (e) => {
+		// 		console.log(e);
+		// 		console.log(e.target)
+		// 		if(e.target.id === "grey"){
+		// 			body.style.backgroundColor = "grey";
+		// 		}
+		// 		else if (e.target.id === "white") {
+		// 			body.style.backgroundColor = "white";
+		// 		}
+		// 		else if(e.target.id === "blue"){
+		// 			body.style.backgroundColor = "blue";
+		// 		}
+		// 		else if(e.target.id === "yellow") {
+		// 			body.style.backgroundColor = "yellow";
+		// 		}
+		// 	} )
+		// } )
+
+// by using switch statement
+
+		buttons.forEach( function(button) {
+			button.addEventListener("click", function(e) {
+				switch (e.target.id) {
+					case "grey":
+						body.style.backgroundColor = e.target.id
+						break;
+					case "white":
+						body.style.backgroundColor = e.target.id
+						break;
+					case "blue":
+						body.style.backgroundColor = e.target.id
+						break;
+					case "yellow":
+						body.style.backgroundColor = e.target.id
+						break;
+					default:
+						console.log('WTF')
+						break;
+				}
+			})
+		});
+	</script>
+</body>
+</html>
