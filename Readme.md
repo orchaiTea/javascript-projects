@@ -24,4 +24,8 @@ It shows time like a real digital clock.
 It's a game which generates a random number and we have to guess it by giving a number as input, we get limited number of attempts to guess the number.\(we can see our attempts decreasing on the screen.\)
 We can start the game over again and our input numbers are shown on the screen.
 
+5. Background Color Changer
+
+It generates random hexcolors continuously and matches the hexcolor with the background color of the application until stopped \(by clicking on the stop button.\)
+
 :octocat:
