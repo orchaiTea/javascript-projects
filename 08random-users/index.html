@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Random Users</title>
+    <style>
+      .container {
+        text-align: center;
+      }
+      .parrent {
+        list-style-type: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box"></div>
+      <ul class="parrent"></ul>
+      <button id="show">show</button>
+    </div>
+  </body>
+  <script>
+
+    const elementId = document.getElementById('text')
+
+    function showContent(){
+      const reqUrl = "https://randomuser.me/api/#"
+      const xhr = new XMLHttpRequest();
+      xhr.open('GET', reqUrl)
+      xhr.responseType = 'json';
+      xhr.onload = function(){
+        const reqObj = xhr.response
+        const personImg = reqObj.results[0].picture.large
+        const nameTitle = reqObj.results[0].name.title
+        const firstName = reqObj.results[0].name.first
+        const lastName = reqObj.results[0].name.last
+        const email = reqObj.results[0].email
+        const dob = reqObj.results[0].dob.date
+        const streetNumber = reqObj.results[0].location.street.number
+        const streetName = reqObj.results[0].location.street.name
+        const phoneNumber = reqObj.results[0].phone
+        displayName(nameTitle, firstName, lastName)
+        displayImg(personImg)
+        displayAddress(streetNumber, streetName)
+        displayMail(email)
+        displayDob(dob)
+        displayPhone(phoneNumber)
+      }
+      xhr.send()
+    }
+
+    function displayImg(imgUrl){
+      const imgContainer = document.querySelector('.box');
+      const imgElement = document.createElement('img')
+      imgElement.src = imgUrl;
+      imgContainer.innerHTML = '';
+      imgContainer.appendChild(imgElement)
+    }
+
+    function displayName(nameTitle, firstName, lastName){
+      const nameContainer = document.querySelector('.box')
+      const p = document.createElement('p')
+      nameContainer.innerHTML = '';
+      p.innerHTML = `Name: ${nameTitle} ${firstName} ${lastName}`;
+      nameContainer.insertAdjacentElement('afterend', p)
+    }
+
+    function displayAddress(streetNumber, streetName){
+      const addressContainer = document.querySelector('.parrent');
+      const li = document.createElement('li')
+      addressContainer.innerHTML = '';
+      li.innerHTML = `Address: ${streetNumber} ${streetName}`;
+      addressContainer.appendChild(li)
+    }
+
+    function displayMail(mail){
+      const mailContainer = document.querySelector('.parrent');
+      const li = document.createElement('li')
+      li.innerHTML = `Mail: ${mail}`;
+      mailContainer.appendChild(li)
+    }
+
+    function displayDob(dob){
+      const dobContainer = document.querySelector('.parrent');
+      const li = document.createElement('li')
+      li.innerHTML = `DOB: ${dob}`;
+      dobContainer.appendChild(li)
+    }
+
+    function displayPhone(phoneNumber){
+      const phoneContainer = document.querySelector('.parrent');
+      const li = document.createElement('li')
+      li.innerHTML = `Phone: ${phoneNumber}`;
+      phoneContainer.appendChild(li)
+    }
+
+    document.getElementById('show').addEventListener('click', showContent, false)
+    
+  </script>
+</html>

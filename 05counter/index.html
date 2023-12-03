@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="heading">Counter</h1>
+        <p class="display"></p>
+        <button id="start">Increase</button>
+        <button id="reset">Reset</button>
+        <button id="stop">Decrease</button>
+        <p class="display-msg"></p>
+    </div>
+    <script type="text/javascript">
+
+        const p = document.querySelector(".display")
+        const msg = document.querySelector(".display-msg")
+
+        let count = 0;
+        const increaseCount = function(maxValue){
+            if(count < maxValue){
+                count++;
+                if(count===maxValue){
+                    msg.innerText = `You have reached the maximum set value.`
+                }
+            }
+            return count;
+        }
+
+        function displayIncrease(){
+            const count = increaseCount(15)
+            p.innerText = `${count}`
+        }
+
+        const restCount = function(){
+            count=0;
+            return count;
+        }
+
+        function displayReset(){
+            const reset = restCount(0)
+            p.innerText = `${reset}`
+            msg.innerText = `Start again.`
+        }
+
+        const decreaseCount = function(minValue){
+            if(count > minValue){
+                count--;
+                if(count===minValue){
+                    msg.innerText = `You have reached the minimum set value.`
+                }
+            }
+            return count;
+        }
+
+        function displayDecrease(){
+            const decrease = decreaseCount(0)
+            p.innerText = `${decrease}`
+        }
+
+
+        const start = document.getElementById("start")
+        const reset = document.getElementById("reset")
+        const stop = document.getElementById("stop")
+        
+        start.addEventListener('click', displayIncrease)
+        reset.addEventListener('click', displayReset)
+        stop.addEventListener('click', displayDecrease)
+
+    </script>
+</body>
+</html>
