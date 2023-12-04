@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+    <title>Custom Hover</title>
+    <style>
+      body {
+        margin: auto;
+        padding: 0;
+        background: #000;
+      }
+      .container {
+        height: 500px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .hover-text {
+        color: #8b9dc3;
+        cursor: default;
+        font-family: "Montserrat", sans-serif;
+        font-size: 3.5rem;
+        position: relative;
+        display: inline-block;
+      }
+      .hover-circle {
+        width: 60px;
+        height: 60px;
+        background: #ff0000;
+        border-radius: 50%;
+        position: absolute;
+        pointer-events: none;
+        transform: translate(-50%, -50%);
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <blockquote id="hover-element" class="hover-text">
+        Hover over here to see the magic.
+      </blockquote>
+      <div id="hoverCircle" class="hover-circle"></div>
+    </div>
+  </body>
+  <script>
+    const hoverElement = document.getElementById("hover-element");
+    const hoverCircle = document.getElementById("hoverCircle");
+
+    hoverElement.addEventListener("mousemove", function (e) {
+      const mouseX = e.clientX;
+      const mouseY = e.clientY;
+
+      hoverCircle.style.left = mouseX + "px";
+      hoverCircle.style.top = mouseY + "px";
+
+      hoverCircle.style.display = "block";
+    });
+    hoverElement.addEventListener("mouseout", function () {
+      hoverCircle.style.display = "none";
+    });
+  </script>
+</html>
