@@ -23,6 +23,8 @@
   <script>
 
     const elementId = document.getElementById('text')
+    const imgContainer = document.querySelector('.box');
+    const container = document.querySelector('.parrent');
 
     function showContent(){
       const reqUrl = "https://randomuser.me/api/#"
@@ -51,7 +53,6 @@
     }
 
     function displayImg(imgUrl){
-      const imgContainer = document.querySelector('.box');
       const imgElement = document.createElement('img')
       imgElement.src = imgUrl;
       imgContainer.innerHTML = '';
@@ -59,40 +60,40 @@
     }
 
     function displayName(nameTitle, firstName, lastName){
-      const nameContainer = document.querySelector('.box')
-      const p = document.createElement('p')
-      nameContainer.innerHTML = '';
-      p.innerHTML = `Name: ${nameTitle} ${firstName} ${lastName}`;
-      nameContainer.insertAdjacentElement('afterend', p)
+      const existingelement = document.querySelector("#show-name");
+      if(existingelement){
+        existingelement.innerHTML = `Name: ${nameTitle} ${firstName} ${lastName}`;
+      }else{
+        const newelement = document.createElement("p");
+        newelement.id = "show-name"
+        newelement.innerHTML = `Name: ${nameTitle} ${firstName} ${lastName}`;
+        imgContainer.after(newelement)
+      }
     }
 
     function displayAddress(streetNumber, streetName){
-      const addressContainer = document.querySelector('.parrent');
       const li = document.createElement('li')
-      addressContainer.innerHTML = '';
+      container.innerHTML = '';
       li.innerHTML = `Address: ${streetNumber} ${streetName}`;
-      addressContainer.appendChild(li)
+      container.appendChild(li)
     }
 
     function displayMail(mail){
-      const mailContainer = document.querySelector('.parrent');
       const li = document.createElement('li')
       li.innerHTML = `Mail: ${mail}`;
-      mailContainer.appendChild(li)
+      container.appendChild(li)
     }
 
     function displayDob(dob){
-      const dobContainer = document.querySelector('.parrent');
       const li = document.createElement('li')
       li.innerHTML = `DOB: ${dob}`;
-      dobContainer.appendChild(li)
+      container.appendChild(li)
     }
 
     function displayPhone(phoneNumber){
-      const phoneContainer = document.querySelector('.parrent');
       const li = document.createElement('li')
       li.innerHTML = `Phone: ${phoneNumber}`;
-      phoneContainer.appendChild(li)
+      container.appendChild(li)
     }
 
     document.getElementById('show').addEventListener('click', showContent, false)
