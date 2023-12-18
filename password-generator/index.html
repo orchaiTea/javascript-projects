@@ -6,16 +6,27 @@
     <title>Password Generator</title>
     <style>
       body {
+        margin: 0;
+        padding: 0;
         background: #191919;
+      }
+      .container {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
       }
       .section-one {
         display: flex;
-        height: 100vh;
+        min-height: 60px;
         align-items: center;
         justify-content: center;
         flex-direction: column;
       }
-
+      #heading {
+        text-align: center;
+        font-size: 3.5rem;
+        color: #913420;
+      }
       .inputField {
         margin-bottom: 10px;
         padding: 10px 20px;
@@ -37,6 +48,7 @@
   </head>
   <body>
     <div class="container">
+      <h3 id="heading">A Password Generater</h3>
       <div class="section-one">
         <input class="inputField" type="text" placeholder="Password" />
         <button class="btn">Generate Password</button>
