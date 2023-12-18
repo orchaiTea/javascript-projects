@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Password Generator</title>
+    <style>
+      body {
+        background: #191919;
+      }
+      .section-one {
+        display: flex;
+        height: 100vh;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+
+      .inputField {
+        margin-bottom: 10px;
+        padding: 10px 20px;
+      }
+      .btn {
+        padding: 10px;
+        background: #0859c6;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        font-size: 1.2rem;
+        line-height: 1.2;
+      }
+      .btn:hover {
+        background: #043576;
+        transform: scale(0.98);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="section-one">
+        <input class="inputField" type="text" placeholder="Password" />
+        <button class="btn">Generate Password</button>
+      </div>
+    </div>
+  </body>
+  <script>
+    const btn = document.querySelector(".btn");
+    const inputField = document.querySelector(".inputField");
+
+    function passwordGenerator() {
+      let pass = "";
+      let str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+      let isNumber = "0123456789";
+      let isChar = " ~`@#$%^&*()_+-={}[]|:<>,? ";
+      str += `${isNumber} ${isChar}`;
+
+      for (let i = 1; i <= 20; i++) {
+        let char = Math.floor(Math.random() * str.length + 1);
+        pass += str.charAt(char);
+      }
+      inputField.value = pass;
+    }
+
+    btn.addEventListener("click", passwordGenerator);
+  </script>
+</html>
